@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #081120,
+        #101827,
+        #1b2440
+    );
+    overflow-y:auto;
+    overflow-x:hidden;
+    color:white;
+    padding:30px 15px;
+}
+
+/* Background Animation */
+
+.background-animation{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.background-animation::before,
+.background-animation::after{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(80px);
+    animation:move 8s infinite alternate;
+}
+
+.background-animation::before{
+    background:#22d3ee;
+    top:-100px;
+    left:-100px;
+}
+
+.background-animation::after{
+    background:#8b5cf6;
+    bottom:-100px;
+    right:-100px;
+}
+
+@keyframes move{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(40px);
+    }
+}
+
+/* Main Card */
+
+.container{
+    position:relative;
+    z-index:10;
+}
+
+.stopwatch-card{
+    width:380px;
+    max-width:100%;
+    padding:30px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.3);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+.icon{
+    font-size:55px;
+    color:#22d3ee;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:2.4rem;
+    margin-bottom:15px;
+}
+
+.time{
+    font-size:4rem;
+    font-weight:700;
+    margin:25px 0;
+    color:#ffffff;
+
+    text-shadow:
+    0 0 12px rgba(56,189,248,.4);
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.start,
+.pause,
+.reset{
+    padding:12px 20px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:600;
+    min-width:95px;
+}
+
+.start{
+    background:#06b6d4;
+    color:white;
+}
+
+.pause{
+    background:#6366f1;
+    color:white;
+}
+
+.reset{
+    background:#ef4444;
+    color:white;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.08);
+}
+
+.lap-btn{
+    padding:12px 24px;
+    border-radius:12px;
+    background:#f8fafc;
+    color:#0f172a;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+/* Laps */
+
+.laps{
+    margin-top:10px;
+    max-height:220px;
+    overflow-y:auto;
+}
+
+.laps h2{
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.laps ul{
+    list-style:none;
+}
+
+.laps li{
+    background:rgba(255,255,255,0.08);
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:10px;
+
+    animation:slideIn 0.5s ease;
+}
+
+.laps::-webkit-scrollbar{
+    width:5px;
+}
+
+.laps::-webkit-scrollbar-thumb{
+    background:#38bdf8;
+    border-radius:10px;
+}
+
+@keyframes slideIn{
+    from{
+        opacity:0;
+        transform:translateX(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+
+    .stopwatch-card{
+        width:100%;
+        padding:25px 18px;
+    }
+
+    .time{
+        font-size:3rem;
+    }
+
+    .buttons{
+        flex-wrap:wrap;
+    }
+
+    .start,
+    .pause,
+    .reset{
+        width:100%;
+    }
+}
